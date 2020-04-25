@@ -21,7 +21,6 @@ import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
@@ -118,7 +117,8 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
                         if (connection != null) {
-                            connection.disconnect();;
+                            connection.disconnect();
+                            ;
                         }
                     }
                 }
@@ -159,7 +159,6 @@ public class MainActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_LOCATION: {
-                // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0 && grantResults[0] ==
                         PackageManager.PERMISSION_GRANTED) {
                     accessLocation();
@@ -175,9 +174,6 @@ public class MainActivity extends AppCompatActivity {
                 PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                     MY_PERMISSIONS_REQUEST_LOCATION);
-            // MY_PERMISSIONS_REQUEST_LOCATION is an
-            // app-defined int constant. The callback method gets the
-            // result of the request.
         } else {
             accessLocation();
         }
